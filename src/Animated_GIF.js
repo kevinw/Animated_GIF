@@ -67,7 +67,7 @@ function Animated_GIF(options) {
     numWorkers = options.numWorkers || 2;
 
     for(var i = 0; i < numWorkers; i++) {
-        var w = new Worker('./Animated_GIF.worker');
+        var w = new Worker(new URL('./Animated_GIF.worker', import.meta.url), {type: "module"});
         workers.push(w);
         availableWorkers.push(w);
     }
